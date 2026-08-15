@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | BoostSMM Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body data-page="dashboard" data-title="Dashboard" data-sub="Overview">
+  <div id="page-content">
+
+    <div class="page-head">
+      <div><h1>Dashboard</h1><div class="page-sub">Overview of your SMM panel.</div></div>
+      <div class="page-head-actions">
+        <button class="btn btn-outline-secondary btn-sm" id="qaViewOrders"><i class="fa-solid fa-boxes-stacked"></i>View Orders</button>
+        <button class="btn btn-primary btn-sm" id="qaAddService"><i class="fa-solid fa-plus"></i>Add Service</button>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stat-grid mb-4">
+      <div class="stat-card"><div class="stat-ic ic-blue"><i class="fa-solid fa-users"></i></div><div class="stat-label">Total Users</div><div class="stat-value">12,450</div><div class="stat-meta"><span class="stat-trend-up"><i class="fa-solid fa-arrow-up"></i> 4.2%</span> vs last month</div></div>
+      <div class="stat-card"><div class="stat-ic ic-purple"><i class="fa-solid fa-boxes-stacked"></i></div><div class="stat-label">Total Orders</div><div class="stat-value">85,420</div><div class="stat-meta"><span class="stat-trend-up"><i class="fa-solid fa-arrow-up"></i> 8.1%</span> vs last month</div></div>
+      <div class="stat-card"><div class="stat-ic ic-amber"><i class="fa-solid fa-clock"></i></div><div class="stat-label">Pending Orders</div><div class="stat-value">1,248</div><div class="stat-meta">Awaiting processing</div></div>
+      <div class="stat-card"><div class="stat-ic ic-green"><i class="fa-solid fa-circle-check"></i></div><div class="stat-label">Completed</div><div class="stat-value">79,340</div><div class="stat-meta">92.9% completion rate</div></div>
+      <div class="stat-card"><div class="stat-ic ic-teal"><i class="fa-solid fa-indian-rupee-sign"></i></div><div class="stat-label">Revenue</div><div class="stat-value">₹8,45,240</div><div class="stat-meta"><span class="stat-trend-up"><i class="fa-solid fa-arrow-up"></i> 12.5%</span> vs last month</div></div>
+      <div class="stat-card"><div class="stat-ic ic-red"><i class="fa-solid fa-ticket"></i></div><div class="stat-label">Open Tickets</div><div class="stat-value">42</div><div class="stat-meta">Needs attention</div></div>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <!-- ORDERS OVERVIEW -->
+      <div class="col-lg-8">
+        <div class="card h-100">
+          <div class="card-header"><div><h2>Orders Overview</h2><div class="card-title-sub">Last 7 days</div></div></div>
+          <div class="card-body">
+            <div id="ordersChart"></div>
+            <div class="chart-legend"><span class="lg"><span class="dot" style="background:#1c1f24"></span>Orders per day</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- STATUS BREAKDOWN -->
+      <div class="col-lg-4">
+        <div class="card h-100">
+          <div class="card-header"><h2>Status Breakdown</h2></div>
+          <div class="card-body">
+            <div class="progress-row"><div class="pr-top"><span>Pending</span><b>1,248</b></div><div class="progress"><div class="progress-bar" style="width:12%;background:var(--c-amber)"></div></div></div>
+            <div class="progress-row"><div class="pr-top"><span>Processing</span><b>2,640</b></div><div class="progress"><div class="progress-bar" style="width:26%;background:var(--c-blue)"></div></div></div>
+            <div class="progress-row"><div class="pr-top"><span>Completed</span><b>79,340</b></div><div class="progress"><div class="progress-bar" style="width:92%;background:var(--c-green)"></div></div></div>
+            <div class="progress-row"><div class="pr-top"><span>Partial</span><b>820</b></div><div class="progress"><div class="progress-bar" style="width:8%;background:var(--c-amber)"></div></div></div>
+            <div class="progress-row"><div class="pr-top"><span>Cancelled</span><b>1,372</b></div><div class="progress"><div class="progress-bar" style="width:14%;background:var(--c-red)"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="card mb-4">
+      <div class="card-body d-flex flex-wrap gap-2 align-items-center">
+        <span class="fw-600 me-2">Quick Actions</span>
+        <button class="btn btn-light btn-sm" id="qaAddUser"><i class="fa-solid fa-user-plus"></i>Add User</button>
+        <button class="btn btn-light btn-sm" id="qaAddService"><i class="fa-solid fa-layer-group"></i>Add Service</button>
+        <button class="btn btn-light btn-sm" id="qaAddCategory"><i class="fa-solid fa-folder-plus"></i>Add Category</button>
+        <button class="btn btn-light btn-sm" id="qaAddProvider"><i class="fa-solid fa-server"></i>Add Provider</button>
+        <button class="btn btn-light btn-sm" id="qaViewOrders"><i class="fa-solid fa-boxes-stacked"></i>View Orders</button>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- RECENT ORDERS -->
+      <div class="col-xl-7">
+        <div class="table-card">
+          <div class="table-toolbar"><h2 class="card-title">Recent Orders</h2><a href="admin-orders.html" class="btn btn-ghost btn-sm ms-auto">View all <i class="fa-solid fa-arrow-right"></i></a></div>
+          <div class="table-responsive"><table class="table table-hover align-middle"><thead><tr><th>ID</th><th>User</th><th>Service</th><th>Qty</th><th>Charge</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody id="recentOrdersBody"></tbody></table></div>
+        </div>
+      </div>
+      <!-- RECENT USERS -->
+      <div class="col-xl-5">
+        <div class="table-card">
+          <div class="table-toolbar"><h2 class="card-title">Recent Users</h2><a href="admin-users.html" class="btn btn-ghost btn-sm ms-auto">View all <i class="fa-solid fa-arrow-right"></i></a></div>
+          <div class="table-responsive"><table class="table table-hover align-middle"><thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Balance</th><th>Orders</th><th>Status</th><th>Registered</th><th></th></tr></thead><tbody id="recentUsersBody"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
